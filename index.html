@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101a2b">
+  <meta name="description" content="A simple course and weighted-grade dashboard that keeps its data in your browser.">
+  <title>Courseboard - Course and Grade Planner</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="Courseboard home"><span class="brand-icon">C</span><span>courseboard</span></a>
+    <div class="top-actions"><button class="quiet-button" id="export-data" type="button">Export backup</button><button class="quiet-button" id="import-button" type="button">Import backup</button><input id="import-file" type="file" accept="application/json,.json" hidden><span class="local-badge"><i></i> SAVED IN THIS BROWSER</span></div>
+  </header>
+  <main class="layout" id="top">
+    <section class="hero"><div><p class="eyebrow">COURSE PLANNER</p><h1>Your courses.<br><em>In focus.</em></h1><p class="hero-copy">Keep assignments, due dates, and grade progress together. Your data stays in this browser.</p></div><button class="sample-button" id="load-example" type="button">Load example data <span>↗</span></button></section>
+    <div class="workspace">
+      <aside class="course-rail" aria-label="Courses">
+        <div class="rail-heading"><div><p class="eyebrow">SEMESTER</p><h2>My courses</h2></div><span class="course-count" id="course-count">0</span></div>
+        <div class="course-list" id="course-list"></div>
+        <form class="mini-form" id="course-form">
+          <p class="eyebrow">ADD A COURSE</p>
+          <label>Course name<input id="course-name" name="name" maxlength="60" placeholder="e.g. Intro to Programming" required></label>
+          <div class="mini-form-row"><label>Code<input id="course-code" name="code" maxlength="16" placeholder="CS 101"></label><label>Target %<input id="course-target" name="target" type="number" min="0" max="100" step="1" value="85" required></label></div>
+          <button class="button primary full" type="submit">Add course <span>＋</span></button>
+        </form>
+      </aside>
+      <section class="course-detail" id="course-detail" aria-live="polite"></section>
+    </div>
+    <p class="privacy-note">Courseboard works offline after it loads. Export a JSON backup before clearing browser data or switching devices.</p>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
